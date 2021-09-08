@@ -18,6 +18,11 @@ const startWhitelist = (num) => {
     fs.writeFileSync('transactionsDB.json', JSON.stringify({}));
 }
 
+app.get('/', (req, res) => {
+    
+    res.send("Hello There!")
+})
+
 const registerMint = (num, address, signature) => {
     let mintsLeftDB = JSON.parse(fs.readFileSync('mintsLeftDB.json', 'utf-8'));
     let transactionsDB = JSON.parse(fs.readFileSync('transactionsDB.json', 'utf-8'));
@@ -42,6 +47,11 @@ app.post('/registerMint', (req, res) => {
     registerMint(num, address, signature);
 
     res.end();
+})
+
+app.get('/getTransactions', (req, res) => {
+    
+    res.send(JSON.parse(fs.readFileSync('transactionsDB.json', 'utf-8')));
 })
 
 let port = 3000
