@@ -7,6 +7,8 @@ const app = express()
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+const owner = "CyBizpsEVPjycYiaCMaDQFkHJWrPZJsBYWeYTz3JYVPX";
+
 const startWhitelist = (num) => {
     let whitelist = fs.readFileSync('whitelist', 'utf-8').split('\n');
     whitelist.push(owner);
