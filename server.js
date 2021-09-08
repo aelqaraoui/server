@@ -29,7 +29,7 @@ const registerMint = (num, address, signature) => {
     let transactionsDB = JSON.parse(fs.readFileSync('transactionsDB.json', 'utf-8'));
 
     mintsLeftDB[address] -= num;
-    transactionsDB[address] = signature;
+    transactionsDB[address] = {signature, num_minted: num};
 
     fs.writeFileSync('mintsLeftDB.json', JSON.stringify(mintsLeftDB));
     fs.writeFileSync('transactionsDB.json', JSON.stringify(transactionsDB));
