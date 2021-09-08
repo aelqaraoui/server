@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const startWhitelist = (num) => {
-    const whitelist = fs.readFileSync('whitelist', 'utf-8').split('\n');
+    let whitelist = fs.readFileSync('whitelist', 'utf-8').split('\n');
+    whitelist.push(owner);
 
     let mintsLeftDB = {};
     whitelist.forEach(x => {
