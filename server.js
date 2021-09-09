@@ -3,9 +3,11 @@ const express = require('express');
 const fs = require('fs');
 
 const app = express()
+const cors = require('cors')
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+app.use(cors())
 
 const owner = "CyBizpsEVPjycYiaCMaDQFkHJWrPZJsBYWeYTz3JYVPX";
 
@@ -57,7 +59,7 @@ app.get('/getTransactions', (req, res) => {
     res.send(JSON.parse(fs.readFileSync('transactionsDB.json', 'utf-8')));
 })
 
-let port = 3000
+let port = 4000
 
 app.listen(port, () => {
     startWhitelist(10);
